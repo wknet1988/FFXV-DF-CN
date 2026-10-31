@@ -1,0 +1,36 @@
+/* ウェブフォントを使用する場合はここに定義を追加して下さい */
+/*
+@font-face {
+    font-family: "mfrules";
+    src: url("../../data/others/Mf_Break_The_Rules.eot?") format("eot"),
+	    url("../../data/others/Mf_Break_The_Rules.woff") format("woff"),
+        url("../../data/others/Mf_Break_The_Rules.ttf") format("truetype"),
+        url("../../data/others/Mf_Break_The_Rules.svg#MfBreakTheRules") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+*/
+
+/* ==========================================================================
+   内嵌默认字体：澹雅明体A（家族名 DYmingA）
+   - 字体文件：data/others/DYmingA.ttf（24.7MB，58575 字形，覆盖全部剧情用字）
+   - 单一字重（SemiBold），normal/bold 均映射到该文件，避免合成加粗失真
+   ========================================================================== */
+@font-face {
+    font-family: "DYmingA";
+    src: url("../../data/others/DYmingA.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "DYmingA";
+    src: url("../../data/others/DYmingA.ttf") format("truetype");
+    font-weight: bold;
+    font-style: normal;
+}
+
+/* 全局默认字体：消息文本、glink 按钮、ptext、菜单、存档对话框等全部继承 */
+body {
+    font-family: "DYmingA", "Microsoft YaHei", "PingFang SC", sans-serif;
+}

@@ -1,0 +1,249 @@
+/* ==========================================================================
+   FFXV 风格 UI  ——  FINAL FANTASY XV The Dawn of the Future
+   设计语言：深色近黑底 + 琥珀金强调 + 切角 + 宽字距 + 菱形标记
+   本文件在 tyrano.css 之后加载，用于覆盖引擎默认样式。
+   ========================================================================== */
+
+:root {
+    --ffxv-amber: #E8A33D;
+    --ffxv-amber-bright: #FFC55C;
+    --ffxv-text: #E8E4DA;
+    --ffxv-text-dim: #9B9488;
+    --ffxv-text-warm: #C9C3B6;
+}
+
+/* --------------------------------------------------------------------------
+   1. glink 菜单项（剧本中 color="ffxv" 启用）
+   -------------------------------------------------------------------------- */
+.glink_button.ffxv {
+    position: relative;
+    display: inline-block;
+    margin: 0;
+    padding: .32em 1.2em .32em 1.75em;
+    border: none;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+    color: var(--ffxv-text-warm) !important;
+    font-family: "DYmingA", "Microsoft YaHei", sans-serif;
+    font-weight: normal;
+    letter-spacing: .3em;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, .92);
+    transition: color .18s ease, text-shadow .18s ease;
+    -webkit-transition: color .18s ease, text-shadow .18s ease;
+}
+
+/* 左侧菱形标记（hover 时旋入） */
+.glink_button.ffxv::before {
+    content: "";
+    position: absolute;
+    left: .5em;
+    top: 50%;
+    width: 7px;
+    height: 7px;
+    margin-top: -4px;
+    background: var(--ffxv-amber);
+    transform: rotate(45deg) scale(0);
+    transform-origin: center;
+    transition: transform .18s ease;
+    -webkit-transition: transform .18s ease;
+}
+
+/* 底部琥珀发丝线（hover 时从左扫过） */
+.glink_button.ffxv::after {
+    content: "";
+    position: absolute;
+    left: 1.75em;
+    right: 1.2em;
+    bottom: .02em;
+    height: 1px;
+    background: linear-gradient(90deg, var(--ffxv-amber), rgba(232, 163, 61, 0));
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform .22s ease;
+    -webkit-transition: transform .22s ease;
+}
+
+.glink_button.ffxv:hover {
+    color: var(--ffxv-amber-bright) !important;
+    text-shadow: 0 0 14px rgba(232, 163, 61, .45), 0 2px 10px rgba(0, 0, 0, .92);
+}
+
+.glink_button.ffxv:hover::before {
+    transform: rotate(45deg) scale(1);
+}
+
+.glink_button.ffxv:hover::after {
+    transform: scaleX(1);
+}
+
+/* 次级按钮（返回等）：无标记、字距略窄 */
+.glink_button.ffxv-back {
+    position: relative;
+    display: inline-block;
+    margin: 0;
+    padding: .3em 1em;
+    border: none;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+    color: var(--ffxv-text-dim) !important;
+    font-family: "DYmingA", "Microsoft YaHei", sans-serif;
+    letter-spacing: .28em;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, .92);
+    transition: color .18s ease, text-shadow .18s ease;
+    -webkit-transition: color .18s ease, text-shadow .18s ease;
+}
+
+.glink_button.ffxv-back:hover {
+    color: var(--ffxv-amber-bright) !important;
+    text-shadow: 0 0 12px rgba(232, 163, 61, .4), 0 2px 10px rgba(0, 0, 0, .92);
+}
+
+/* 音频解锁门控（Click to Start）：琥珀 + 呼吸脉冲
+   剧本里 width="1280" 铺满整行 → 点任意横向位置都能开始，文字在条内居中。 */
+.glink_button.ffxv-gate {
+    position: relative;
+    display: inline-block;
+    margin: 0;
+    padding: .3em 1.2em;
+    border: none;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+    box-sizing: border-box;
+    text-align: center;
+    color: var(--ffxv-amber-bright) !important;
+    font-family: "DYmingA", "Microsoft YaHei", sans-serif;
+    letter-spacing: .5em;
+    text-shadow: 0 0 16px rgba(232, 163, 61, .5), 0 2px 14px rgba(0, 0, 0, .95);
+    animation: ffxv-gate-pulse 1.8s ease-in-out infinite;
+    -webkit-animation: ffxv-gate-pulse 1.8s ease-in-out infinite;
+}
+
+/* 下划发丝线（两端淡出） */
+.glink_button.ffxv-gate::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 3px;
+    width: 340px;
+    height: 1px;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    background: linear-gradient(90deg,
+        rgba(232, 163, 61, 0) 0%,
+        rgba(232, 163, 61, .8) 50%,
+        rgba(232, 163, 61, 0) 100%);
+}
+
+@keyframes ffxv-gate-pulse {
+    0%, 100% { opacity: .68; }
+    50% { opacity: 1; }
+}
+
+@-webkit-keyframes ffxv-gate-pulse {
+    0%, 100% { opacity: .68; }
+    50% { opacity: 1; }
+}
+
+/* --------------------------------------------------------------------------
+   2. 消息窗口：角色名板（ptext name="chara_name_area" 生成 .chara_name_area）
+   -------------------------------------------------------------------------- */
+.chara_name_area {
+    letter-spacing: .22em;
+}
+
+/* --------------------------------------------------------------------------
+   2b. about 页 FBI warning 式大标题（ptext name="fbi_title"）
+   -------------------------------------------------------------------------- */
+.fbi_title {
+    letter-spacing: .30em;
+    text-indent: .30em; /* 视觉居中补偿：宽字距会把最后一个字推离中心 */
+}
+
+/* 章节选择标题（ptext name="select_title"） */
+.select_title {
+    letter-spacing: .3em;
+}
+
+/* --------------------------------------------------------------------------
+   3. 存档 / 读档 / 回溯 列表
+   -------------------------------------------------------------------------- */
+.save_list_item:hover {
+    background-color: rgba(232, 163, 61, .13) !important;
+}
+
+.save_list_item_date {
+    color: var(--ffxv-amber) !important;
+    letter-spacing: .1em;
+}
+
+.save_list_item_text {
+    color: var(--ffxv-text) !important;
+    letter-spacing: .06em;
+}
+
+/* 回溯日志 */
+.log_body {
+    background: rgba(10, 13, 18, .78) !important;
+    color: var(--ffxv-text-warm) !important;
+    border: 1px solid rgba(232, 163, 61, .32) !important;
+    line-height: 1.9 !important;
+}
+
+/* 滚动条琥珀化 */
+.area_save_list::-webkit-scrollbar,
+.log_body::-webkit-scrollbar {
+    width: 10px;
+}
+
+.area_save_list::-webkit-scrollbar-thumb,
+.log_body::-webkit-scrollbar-thumb {
+    background: rgba(232, 163, 61, .55);
+    border-radius: 0;
+}
+
+.area_save_list::-webkit-scrollbar-track-piece,
+.log_body::-webkit-scrollbar-track-piece {
+    background: rgba(10, 13, 18, .6);
+}
+
+/* --------------------------------------------------------------------------
+   5. 消息窗底部剧情控制按钮（AUTO / SKIP）
+      [button role="auto"/"skip"] 挂在 fix 层，z-index 由引擎写成 99999999，
+      会把右键菜单 / 存档 / 回溯这类模态界面压在下面，这里把菜单提到最上层。
+   -------------------------------------------------------------------------- */
+.layer_menu {
+    z-index: 999999999 !important;
+}
+
+/* --------------------------------------------------------------------------
+   6. 停用引擎右下角三道杠主菜单按钮
+      kag.js 初始化时创建 .button_menu（z-index 100000000，默认右下角）。
+      已由 Config.tjs configVisible=false + title_screen.ks 去掉 [showmenubutton]
+      关闭；这里再加 !important 兜底，防止误用 showmenubutton 复活它。
+      右键菜单不受影响：showmenu 是 jQuery trigger 点击，不依赖可见性。
+   -------------------------------------------------------------------------- */
+.button_menu {
+    display: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   4. 引擎弹窗（alertify / remodal）暗色琥珀化
+   -------------------------------------------------------------------------- */
+.alertify, .remodal-wrapper {
+    font-family: "DYmingA", "Microsoft YaHei", sans-serif;
+}
+
+.alertify-logs, .alertify-button-cancel, .alertify-button-ok {
+    border-radius: 0 !important;
+    border: 1px solid rgba(232, 163, 61, .5) !important;
+    background: rgba(16, 21, 29, .95) !important;
+    color: var(--ffxv-amber-bright) !important;
+    letter-spacing: .2em;
+}
+
+.alertify-button-ok:hover, .alertify-button-cancel:hover {
+    background: rgba(232, 163, 61, .22) !important;
+}

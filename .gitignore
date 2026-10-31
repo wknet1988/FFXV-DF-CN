@@ -1,0 +1,20 @@
+# WorkBuddy 内部工具链与构建中间产物（非游戏源码）
+.workbuddy/
+
+# macOS 元数据
+.DS_Store
+
+# 游戏存档
+*.sav
+
+# 依赖
+node_modules/
+
+# 导出/构建产物（Windows 包体单独分发，不进仓库）
+export/
+dist/
+build/
+
+# 临时文件
+*.log
+*.tmp

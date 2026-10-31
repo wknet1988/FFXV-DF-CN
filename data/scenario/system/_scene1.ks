@@ -1,0 +1,6 @@
+[preload  storage="./data/bgimage/final-fantasy-nissin-2.jpg"  ]
+[preload  storage="./data/bgimage/stop1.png"  ]
+[preload  storage="./data/bgimage/stop2.png"  ]
+[preload  storage="./data/bgimage/Final-Fantasy-15-Episode-Ardyn.jpg"  ]
+[preload  storage="./data/bgimage/bg1.jpg"  ]
+[return]

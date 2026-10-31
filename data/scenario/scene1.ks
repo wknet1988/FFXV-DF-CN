@@ -1,0 +1,37 @@
+[_tb_system_call storage=system/_scene1.ks]
+
+[bg  storage="final-fantasy-nissin-2.jpg"  time="1000"  ]
+[freeimage  layer=2  time="0"  ]
+
+[tb_show_message_window  ]
+[tb_start_text mode=1 ]
+#露娜芙蕾雅
+大家好,我是露娜.我的遭遇想必大家已经很清楚了.[p]
+现在的我已经失业很久,每天只能吃这个![p]
+看着隔壁亚丹那副小人得志的样子,我就怒火中烧![p]
+不能只有我一个人受伤!我要逆袭!等着我![p]
+[_tb_end_text]
+
+[tb_hide_message_window  ]
+[bg  time="0"  method="crossfade"  storage="stop1.png"  ]
+[movie  volume="100"  storage="tv_turn_off_effect.webm"  ]
+[bg  time="1000"  method="crossfade"  storage="stop2.png"  ]
+[bg  time="2000"  method="crossfade"  storage="Final-Fantasy-15-Episode-Ardyn.jpg"  ]
+[tb_show_message_window  ]
+[tb_start_text mode=1 ]
+#亚丹
+嗨!大家好!好久不见,想我了吗?[p]
+看了我最近的新片吗?很棒对不对?[p]
+你说那个小姑娘?哈哈![p]
+谁叫她不懂得哄导演开心呢?[p]
+做人就要像我一样,上得厅堂,耍得流氓.[p]
+这样才能成为成功人士. [p]
+你也不想成为Loser是不是.[p]
+跟着我吧!像我这样又帅又坏又聪明的男人最受女人欢迎了![p]
+[_tb_end_text]
+
+[tb_hide_message_window  ]
+[movie  volume="100"  storage="tv_turn_off_effect.webm"  ]
+[bg  time="0"  method="crossfade"  storage="bg1.jpg"  ]
+[jump  storage="charpter_select.ks"  target=""  ]
+[s  ]
